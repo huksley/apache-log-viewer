@@ -1,7 +1,10 @@
 <?php
     require('SimpleLogViewer/SimpleLogViewer.php');
-    
-    $simpleLogViewer = new SimpleLogViewer('/var/log/apache2/projects_error_log');
+    $log = "/var/log/apache2/error.log";
+    if (isset($_SERVER["ERROR_LOG"])) {
+	$log = $_SERVER["ERROR_LOG"];
+    }
+    $simpleLogViewer = new SimpleLogViewer($log);
 ?>
 <!doctype html>
 <html>
